@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class GetVideosController extends Controller
 {
-    public function store()
+    public function getVideosDesinfo()
     {
         $apiKey = config('services.youtube.api_key');
         $channelId = 'UC6Y5eAyPvXRkrDlgruro3CA';
@@ -19,5 +20,9 @@ class GetVideosController extends Controller
             'order' => 'date',
             'maxResults' => 10,
         ]);
+
+        $videos = $response->json(['items']);
+
+        dd($response);
     }
 }
