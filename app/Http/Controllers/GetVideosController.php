@@ -58,7 +58,7 @@ class GetVideosController extends Controller
 
     public function getVideosDesinfo()
     {
-        return $this->getVideos('UC6Y5eAyPvXRkrDlgruro3CA', Videos::class);
+        return $this->getVideos('UC6Y5eAyPvXRkrDlgruro3CA', Video::class);
     }
 
     public function getVideosAderiva()
