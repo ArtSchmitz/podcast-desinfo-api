@@ -44,7 +44,7 @@ class GetVideosController extends Controller
                 $videoData[] = [
                     'title' => $video['snippet']['title'],
                     'description' => $video['snippet']['description'],
-                    'video_url' => 'https://www.youtube.com/watch?v=' . $video['id']['videoId'],
+                    'video_url' => $video['id']['videoId'],
                 ];
             }
 
