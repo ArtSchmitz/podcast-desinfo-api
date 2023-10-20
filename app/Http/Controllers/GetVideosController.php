@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Video;
 use App\Models\Aderiva;
+use App\Models\SacoCheio;
 
 class GetVideosController extends Controller
 {
@@ -65,4 +66,9 @@ class GetVideosController extends Controller
     {
         return $this->getVideos('UCeg3XXEiFL2Zr3HcfNPUVzg', Aderiva::class);
     }
+
+    public function getVideosSacoCheio()
+    {
+        return $this->getVideos('UCEi4mIXHbqrEGsLoywqKi5g', SacoCheio::class);
+    }    
 }

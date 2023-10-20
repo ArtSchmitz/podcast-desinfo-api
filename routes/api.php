@@ -19,6 +19,8 @@ Route::get('/podcast-desinfo', [GetVideosController::class, 'getVideosDesinfo'])
 
 Route::get('/podcast-aderiva', [GetVideosController::class, 'getVideosAderiva']);
 
+Route::get('/podcast-saco-cheio', [GetVideosController::class, 'getVideosSacoCheio']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
