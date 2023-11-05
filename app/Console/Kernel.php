@@ -14,8 +14,6 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call('App\Http\Controllers\GetVideosController@getVideosDesinfo')
                  ->hourly();
-        $schedule->call('App\Http\Controllers\GetVideosController@getVideosAderiva')
-                 ->hourly();
     }
 
     /**

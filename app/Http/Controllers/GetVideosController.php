@@ -65,27 +65,14 @@ class GetVideosController extends Controller
 
     public function getVideosInfo($channelId, $model)
     {
-        $response = Http::get('https://www.googleapis.com/youtube/v3/search', [
-            'key' => $this->apiKey,
-            'q' => $channelId,
-            'part' => 'snippet',
-            'channel' => 'channel',
-            'maxResults' => 1,
-        ]);
+        $channelName = $channelId;
 
-        if ($response->successful()) {
-            $data = $response->json();
-            $channelInfo = $data['items'][0]['snippet'];
+        $channel = $model::where('channel_name', $channelName)->first();
 
-            $channelData = [
-                'channel_name' => $channelInfo['title'],
-            ];
-
-            $model::insert($channelData);
-
-            return response()->json($channelData);
+        if ($channel) {
+            return response()->json(['channel_name' => $channel->channel_name]);
         } else {
-            return response()->json(['error' => 'Deu ruim kkkk']);
+            return response()->json(['message' => 'O canal não foi encontrado.'], 404);
         }
     }
 
@@ -106,16 +93,16 @@ class GetVideosController extends Controller
 
     public function getVideosInfoDesinfo()
     {
-        return $this->getVideosInfo($this->desinfoId, DesinfoInfo::class);
+        return $this->getVideosInfo('Podcast Desinformação', DesinfoInfo::class);
     }
 
     public function getVideosInfoAderiva()
     {
-        return $this->getVideosInfo($this->aderivaId, AderivaInfo::class);
+        return $this->getVideosInfo('Á Deriva Podcast', AderivaInfo::class);
     }
 
     public function getVideosInfoSacoCheio()
     {
-        return $this->getVideosInfo($this->sacocheioId, SacoCheioInfo::class);
+        return $this->getVideosInfo('Saco Cheio Podcast', SacoCheioInfo::class);
     }
 }
