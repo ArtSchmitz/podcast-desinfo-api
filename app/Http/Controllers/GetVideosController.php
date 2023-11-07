@@ -88,7 +88,7 @@ class GetVideosController extends Controller
 
     public function getVideosSacoCheio()
     {
-        return $this->getVideos($this->aderivaId, SacoCheio::class);
+        return $this->getVideos($this->sacocheioId, SacoCheio::class);
     }
 
     public function getVideosInfoDesinfo()
